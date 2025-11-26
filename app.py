@@ -66,7 +66,7 @@ HTML_PAGE = """
 </head>
 <body>
     <div class="card">
-        <h1>🚀 Mini IA Flask</h1>
+        <h1>🚀 erick mateo silva suarez</h1>
         <p>
             Bienvenido a tu servicio desplegado con CI/CD.  
             Este proyecto demuestra una API simple con IA simulada.
