@@ -1,6 +1,5 @@
-flask==2.3.2
+Flask==2.3.3
+Werkzeug==2.3.7
 pytest==7.4.0
 requests==2.31.0
 gunicorn==20.1.0
-werkzeug>=3.0
-
