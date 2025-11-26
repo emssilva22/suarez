@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  suarez:
+    image: ghcr.io/emssilva22/suarez:1.0.5
+    deploy:
+      replicas: 1
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.suarez.entrypoints=http"
+        - "traefik.http.routers.suarez.rule=Host(`suarez.byronrm.com`)"
+        - "traefik.http.middlewares.suarez-https-redirect.redirectscheme.scheme=https"
+        - "traefik.http.routers.suarez.middlewares=suarez-https-redirect"
+        - "traefik.http.routers.suarez-secure.entrypoints=https"
+        - "traefik.http.routers.suarez-secure.rule=Host(`suarez.byronrm.com`)"
+        - "traefik.http.routers.suarez-secure.tls=true"
+        - "traefik.http.routers.suarez-secure.tls.certresolver=http"
+        - "traefik.http.routers.suarez-secure.service=suarez"
+        - "traefik.http.services.suarez.loadbalancer.server.port=5000"
+        - "traefik.docker.network=traefik-public"
+    networks:
+      - traefik-public
+
+networks:
+  traefik-public:
+    external: true
