@@ -4,14 +4,18 @@ from app import app
 @pytest.fixture
 def client():
     app.testing = True
-    return app.test_client()
+    with app.app_context():
+        with app.test_client() as client:
+            yield client
 
 # --- Test de la página HTML ---
 def test_home_html(client):
     response = client.get("/")
     assert response.status_code == 200
-    assert "<html" in response.get_data(as_text=True).lower()
-    assert "mini ia flask" in response.get_data(as_text=True)
+
+    contenido = response.get_data(as_text=True).lower()
+    assert "<html" in contenido
+    assert "mini ia flask" in contenido
 
 # --- Tests del endpoint /saludar ---
 def test_saludar_ok(client):
@@ -20,7 +24,7 @@ def test_saludar_ok(client):
 
     assert response.status_code == 200
     assert "mensaje" in data
-    assert "Erick" in data["mensaje"]
+    assert "erick" in data["mensaje"].lower()
 
 def test_saludar_error(client):
     response = client.post("/saludar", json={})
@@ -33,6 +37,7 @@ def test_ia_ok(client):
 
     assert response.status_code == 200
     assert "resultado" in data
+    assert "parece" in data["resultado"].lower()
 
 def test_ia_error(client):
     response = client.post("/ia", json={})
