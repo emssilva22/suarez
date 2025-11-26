@@ -2,13 +2,12 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-
 HTML_PAGE = """
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Mini IA – Flask App</title>
+    <meta charset="utf-8">
+    <title>Mini erick silva</title>
     <style>
         body {
             margin: 0;
@@ -66,9 +65,9 @@ HTML_PAGE = """
 </head>
 <body>
     <div class="card">
-        <h1>🚀 Mini erick silva</h1>
+        <h1>Mini erick silva</h1>
         <p>
-            Bienvenido a tu servicio desplegado con CI/CD.  
+            Bienvenido a tu servicio desplegado con CI/CD.<br>
             Este proyecto demuestra una API simple con IA simulada.
         </p>
 

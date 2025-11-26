@@ -14,7 +14,7 @@ def test_home_html(client):
     assert response.status_code == 200
 
    contenido = response.get_data(as_text=True).lower()
-  assert "🚀 Mini erick silva" in contenido
+  assert "Mini erick silva" in contenido
 
 
 # --- Tests del endpoint /saludar ---
