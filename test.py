@@ -15,7 +15,7 @@ def test_home_html(client):
 
     contenido = response.get_data(as_text=True).lower()
     assert "<html" in contenido
-    assert "mini ia flask" in contenido
+    assert "🚀 Mini erick silva" in contenido
 
 # --- Tests del endpoint /saludar ---
 def test_saludar_ok(client):
